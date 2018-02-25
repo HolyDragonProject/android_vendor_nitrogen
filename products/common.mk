@@ -103,3 +103,10 @@ $(call inherit-product-if-exists, vendor/nitrogen/products/bootanimation.mk)
 
 # Themes
 $(call inherit-product-if-exists, vendor/nitrogen/products/themes.mk)
+
+# Include SDCLANG definitions if it is requested and available
+ifeq ($(HOST_OS),linux)
+    ifneq ($(wildcard vendor/qcom/sdclang/),)
+        include vendor/nitrogen/sdclang/sdclang.mk
+    endif
+endif
